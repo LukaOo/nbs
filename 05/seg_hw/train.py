@@ -24,8 +24,14 @@ if os.path.exists(log) == False:
 tb_writer = SummaryWriter(log_dir='log')
 
 if __name__ == '__main__':
+    """
+     Тут модель, которую мы реализовали в файле model.py
+    """
     m = SegmenterModel()
-    criterion = nn.BCELoss()
+    """
+    Делаем критерий, который будем оптимайзить
+    """
+    criterion = None
     optimizer = optim.Adam(m.parameters(), lr=0.001)
 
     if useCuda == True:
