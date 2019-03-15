@@ -3,7 +3,7 @@ import torch
 import PIL
 import pickle
 
-def test_conv(conv_image, test_image_path):
+def test_conv(conv_image, test_image_path, bin_test=True):
     """
     Tests convolution results
     Args:
@@ -22,7 +22,8 @@ def test_conv(conv_image, test_image_path):
     p = fig.add_subplot(1, 2, 2)
     p.set_title('Тест')
     plt.imshow(t_image.numpy(), cmap='gray')
-    assert (o_image == t_image).all(), 'Что-то пошло не так, тест не пройден'
+    if bin_test:
+        assert (o_image == t_image).all(), 'Что-то пошло не так, тест не пройден'
 
 def test_bn_plots(mean, var, stat_name):
     t_mean = None
